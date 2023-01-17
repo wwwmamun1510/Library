@@ -1,64 +1,157 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Library
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A brief description of what this project does and who it's for
 
-## About Laravel
+![library](https://user-images.githubusercontent.com/97294949/212998244-b281eced-05ab-4c5e-b628-1eaa78d68c6c.GIF)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Badges
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Add badges from somewhere like: [shields.io](https://shields.io/)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 About Me
+I'm a full stack developer...
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## 🛠 Skills
+Javascript, HTML, CSS...
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+## Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Install my- project with Gitbash
 
-## Contributing
+```bash
+<?php
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookissueController;
+use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LibraryauthorityController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\StudentController;
+use Illuminate\Support\Facades\Auth;
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Auth::routes();
 
-## License
+Route::get('/', [FrontendController::class, 'welcome']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [FrontendController::class, 'about']);
+Route::get('/contact', [FrontendController::class, 'contact']);
+Route::get('/admin', [FrontendController::class, 'admin']);
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+// users
+Route::post('/add/users', [HomeController::class, 'add_users']);
+
+
+
+
+//Category
+Route::get('/category', [CategoryController::class, 'category']);
+Route::post('/category/insert', [CategoryController::class,'insert']); 
+Route::get('/category/delete/{category_id}', [CategoryController::class, 'delete']);
+Route::get('/category/edit/{category_id}', [CategoryController::class,'edit']);
+Route::post('/category/update', [CategoryController::class, 'update']);
+//Route::get('/category/restore/{category_id}', [CategoryController::class,'restore']); 
+//Route::get('/category/permanent/delete/{category_id}', [CategoryController::class,'p_delete']);
+
+
+//Author
+Route::get('/author',[AuthorController::class, 'author']);
+Route::post('/author/insert',[AuthorController::class,'insert']);
+Route::get('/author/delete/{author_id}', [AuthorController::class, 'delete']);
+Route::get('/author/edit/{author_id}', [AuthorController::class,'edit']);
+Route::post('/author/update',[AuthorController::class, 'update']);
+
+
+//Publisher
+Route::get('/publisher', [PublisherController::class, 'publisher']);
+Route::post('/publisher/insert',[PublisherController::class,'insert']);
+Route::get('/publisher/delete/{publisher_id}',[PublisherController::class,'delete']);
+Route::get('/publisher/edit/{publisher_id}',[PublisherController::class, 'edit']);
+Route::post('/publisher/update', [PublisherController::class, 'update']);
+//Route::get('/publisher/permanent/delete/{publisher_id}', [PublisherController::class,'p_delete']);
+//Route::get('/publisher/restore/{publisher_id}',[PublisherController::class,'restore']);
+
+
+//Book
+Route::get('/book', [BookController::class, 'book']);
+Route::post('/book/insert', [BookController::class, 'insert']);
+Route::get('/book/delete/{book_id}', [BookController::class, 'delete']);
+Route::get('/book/edit/{book_id}', [BookController::class, 'edit']);
+Route::post('/book/update', [BookController::class, 'update']);
+Route::post('/book/status', [BookController::class, 'book_status']);
+
+//Student
+Route::get('/student', [StudentController::class,'student']);
+Route::post('/student/insert',[StudentController::class, 'insert']);
+Route::get('/student/delete/{student_id}',[StudentController::class, 'delete']);
+Route::get('/student/edit/{student_id}',[StudentController::class, 'edit']);
+Route::post('/student/update', [StudentController::class, 'update']);
+
+//Book Issue
+Route::get('/issue', [BookissueController::class,'issue']);
+Route::post('/issue/insert',[BookissueController::class, 'insert']);
+Route::get('/issue/delete/{issue_id}',[BookissueController::class, 'delete']);
+Route::get('/issue/edit/{issue_id}',[BookissueController::class, 'edit']);
+Route::post('/issue/update', [BookissueController::class, 'update']);
+
+
+//Authority
+Route::get('/authority', [LibraryauthorityController::class,'management']);
+Route::post('/authority/insert',[LibraryauthorityController::class, 'insert']);
+Route::get('/authority/delete/{authority_id}',[LibraryauthorityController::class, 'delete']);
+Route::get('/authority/edit/{authority_id}',[LibraryauthorityController::class, 'edit']);
+Route::post('/authority/update', [LibraryauthorityController::class, 'update']);
+
+
+//profile
+Route::get('/profile/edit', [ProfileController::class, 'profile']);
+Route::post('/profile/update', [ProfileController::class, 'update']);
+Route::post('/password/update', [ProfileController::class, 'pass_update']);
+Route::post('/photo/change', [ProfileController::class, 'photo_edit']); 
+
+//Controller
+
+php artisan make:controller AuthorController
+php artisan make:controller BookController
+php artisan make:controller BookissueController
+php artisan make:controller CategoryController
+php artisan make:controller FrontendController
+php artisan make:controller HomeController
+php artisan make:controller LibraryauthorityController
+php artisan make:controller ProfileController
+php artisan make:controller PublisherController
+php artisan make:controller StudentController
+
+//Models
+php artisan make:Model Author -m
+php artisan make:Model Book -m
+php artisan make:Model Bookissue -m
+php artisan make:Model Category -m
+php artisan make:Model Libraryauthority -m
+php artisan make:Model Publisher -m
+php artisan make:Model Stud
