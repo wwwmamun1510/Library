@@ -163,4 +163,4 @@ php artisan make:Model Bookissue -m
 php artisan make:Model Category -m
 php artisan make:Model Libraryauthority -m
 php artisan make:Model Publisher -m
-php artisan make:Model Stud
+php artisan make:Model Student -m
