@@ -25,6 +25,15 @@ Javascript, HTML, CSS...
 
 Install my- project with Gitbash
 
+//First Project Installation Command
+composer create-project laravel/laravel Library
+Composer require laravel/ui
+php artisan ui bootstrap --auth
+npm Install
+npm run dev
+php artisan migrate
+//End Installation
+
 ```bash
 <?php
 
